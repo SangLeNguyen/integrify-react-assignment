@@ -1,14 +1,20 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@mui/material/Card';
+import Box from '@mui/material/Box'
+import Avatar from '@mui/material/Avatar';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ListContent from './ListContent';
 
 const useStyles = makeStyles({
     root: {
-        minWidth: 275
+        minWidth: 300,
+        minHeight: 335,
+        textAlign: 'center',
+        marginTop: 10
     },
     title:{
         fontSize: 14
@@ -19,23 +25,32 @@ const useStyles = makeStyles({
 });
 
 const InfoCard = (props) => {
+
     const classes = useStyles();
 
     return (
         <Card className={classes.root}>
+            <Box display="flex" justifyContent="center" alignItems="center" p={2}>
+                <Avatar style={{height: '110px',width: '110px'}}>{props.name[0]}</Avatar>
+            </Box>
             <CardContent>
-            <Typography variant="h5" component="div">
+            <Typography variant="h6" component="div">
                 {props.name}
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {props.username}
+            <Typography variant="body2" sx={{ mb: 1.5 }} color="text.secondary">
+                @{props.username}
             </Typography>
             <Typography variant="body2">
-                <a href="{props.website}">{props.website}</a>
+                <a href="http://{props.website}">http://{props.website}</a>
             </Typography>
             </CardContent>
+            
             <CardActions>
-                <Button variant="contained" size="medium">MORE DETAILS</Button>
+                <Button 
+                style={{marginLeft: 'auto', marginRight: 'auto'}} 
+                variant="contained" size="medium" 
+                // onClick={() => }
+                href='./details'>MORE DETAILS</Button>
             </CardActions>
         </Card>
     
