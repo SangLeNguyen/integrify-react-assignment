@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box'
 import Avatar from '@mui/material/Avatar';
@@ -7,7 +7,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ListContent from './ListContent';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -31,7 +31,9 @@ const InfoCard = (props) => {
     return (
         <Card className={classes.root}>
             <Box display="flex" justifyContent="center" alignItems="center" p={2}>
-                <Avatar style={{height: '110px',width: '110px'}}>{props.name[0]}</Avatar>
+                <Avatar style={{height: '110px',width: '110px'}}>
+                    {props.name[0]}
+                </Avatar>
             </Box>
             <CardContent>
             <Typography variant="h6" component="div">
@@ -44,14 +46,18 @@ const InfoCard = (props) => {
                 <a href="http://{props.website}">http://{props.website}</a>
             </Typography>
             </CardContent>
-            
+            <Box display="flex" justifyContent="center" alignItems="center" p={2}>
             <CardActions>
-                <Button 
-                style={{marginLeft: 'auto', marginRight: 'auto'}} 
-                variant="contained" size="medium" 
-                // onClick={() => }
-                href='./details'>MORE DETAILS</Button>
+                <Link to={`/${props.id}`}>
+                    <Button 
+                    variant="contained"
+                    size="medium">
+                    MORE DETAILS
+                    </Button>
+                </Link>
             </CardActions>
+            </Box>
+            
         </Card>
     
   )};
